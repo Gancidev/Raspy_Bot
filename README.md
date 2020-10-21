@@ -2,7 +2,7 @@
 Bot per comunicare con la propria raspberry
 
 # Funzionamento
-L'utente lancia un comando che poi il bot intepreta in modi diversi, i comandi 3 e 4 sono lanciati dalla libreria os e quindi riavvia/spegne la raspberry, mentre i comandi 1 e 2 sono generati dalla libreria subprocess il quale output viene elaborato per fornire i messaggi sull'ip locale o sullo stato della raspberry
+L'utente lancia un comando che poi il bot interpreta in modi diversi, i comandi 3 e 4 sono lanciati dalla libreria os e quindi riavvia/spegne la raspberry, mentre i comandi 1 e 2 sono generati dalla libreria subprocess il quale output viene elaborato per fornire i messaggi sull'ip locale o sullo stato della raspberry
 
 # Comandi Disponibili
 1. /ip : Comunica all'utente l'ip locale della raspberry
@@ -26,5 +26,5 @@ La libreria viene utilizzata per lanciare comandi di sistema, è stata utilizzat
 
 # Installazione e Utilizzo
 Per poter eseguire lo script sarà necessario installare le opportune librerie indicate sopra.
-Per usufruire del bot invece è necessario inserire l'id della vostra chat facilmente visionabile lanciando lo script, mandando un messaggio al bot e leggendo dal terminale il campo chat valore id.
+Per usufruire del bot è necessario inserire l'id della vostra chat facilmente visionabile lanciando lo script, mandando un messaggio al bot e leggendo dal terminale il campo chat valore id e aggiungere il Telegram Bot Token.
 Per rendere il bot sempre attivo senza dover avere una sessione aperta sulla raspy si può trasformare lo script in un servizio linux mediante la seguente guida: https://github.com/torfsen/python-systemd-tutorial
