@@ -3,10 +3,10 @@ Bot per comunicare con la propria raspberry
 
 # Comandi Disponibili
 
-1. /ip : permette all'utente di settare una città di default.
-2. /status : mostra le previsioni meteo per la città di default.
-3. /reboot : mostra le previsioni meteo per la città specificata.
-4. /shutdown : mostra un messaggio che riassume il funzionamento del bot all'utente.
+1. /ip : Comunica all'utente l'ip locale della raspberry
+2. /status : Crea un piccolo report sull'utilizzo di memorie(RAM e MicroSD) e CPU
+3. /reboot : Riavvia la raspberry.
+4. /shutdown : Spegne la raspberry.
 
 # Implementazione
 
