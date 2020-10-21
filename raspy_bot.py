@@ -8,8 +8,8 @@ def handle(msg):
     print(msg)
     content_type, chat_type, chat_id = telepot.glance(msg)
     print(content_type, chat_type, chat_id)
-
-    if content_type == 'text' and chat_id == 151511468:
+    #E' importante settare il chat_id nell'if perchè altrimenti chiunque potrebbe ricevere informazioni sulla nostra raspberry e causarne riavvii, spegnimenti e altro.
+    if content_type == 'text' and chat_id == {YOUR CHAT_ID}:
         if msg["text"]=="/ip":
             ip = subprocess.check_output("hostname -I", shell=True)
             bot.sendMessage(chat_id, "Indirizzo Locale:  "+str(ip))
@@ -28,7 +28,7 @@ def handle(msg):
         if msg["text"]=="/shutdown":
             bot.sendMessage(chat_id, "Sto spegnendo la scheda, il bot non rispondera' fino alla sua accensione.")
             os.system("shutdown -h now")
-TOKEN = '1288871500:AAFpLlV6Pox6sKzYv8czSFyfbJX4iIk93YE'
+TOKEN = '{YOUR TELEGRAM BOT TOKEN}'
 
 bot = telepot.Bot(TOKEN)
 MessageLoop(bot, handle).run_as_thread()
