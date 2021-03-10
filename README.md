@@ -28,3 +28,5 @@ La libreria viene utilizzata per lanciare comandi di sistema, è stata utilizzat
 Per poter eseguire lo script sarà necessario installare le opportune librerie indicate sopra.
 Per usufruire del bot è necessario inserire l'id della vostra chat facilmente visionabile lanciando lo script, mandando un messaggio al bot e leggendo dal terminale il campo chat valore id e aggiungere il Telegram Bot Token.
 Per rendere il bot sempre attivo senza dover avere una sessione aperta sulla raspy si può trasformare lo script in un servizio linux mediante la seguente guida: https://github.com/torfsen/python-systemd-tutorial
+
+E' necessario installare il pacchetto sysstat con il comando "apt-get install sysstat" per far funzionare correttamente il bot.
