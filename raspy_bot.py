@@ -21,6 +21,13 @@ def handle(msg):
             test=testo.split("\n")
             tes=test[1].split(" ")
             messaggio=messaggio+"\n\nStato HDD:\n Totale: "+tes[7]+"B\n In Uso: "+tes[9]+"B\n Disponibile: "+tes[13]+"B"
+            testo=subprocess.check_output("cat /sys/class/thermal/thermal_zone*/temp", shell=True)
+            messaggio=messaggio+"\n\nStato CPU:\n Temperatura: "+testo[:2]+"."+testo[2:3]+"'C\n Utilizzo:"
+            testo=subprocess.check_output("mpstat",shell=True)
+            testo=testo.split("\n")
+            testo=testo[3].split(" ")
+            tes=100-float(testo[-1].replace(",","."))
+            messaggio=messaggio+" "+str(tes)
             bot.sendMessage(chat_id, messaggio)
         if msg["text"]=="/reboot":
             bot.sendMessage(chat_id, "Sto riavviando la scheda.")
