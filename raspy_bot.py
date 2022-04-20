@@ -13,21 +13,21 @@ def handle(msg):
         if msg["text"]=="/ip":
             ip = subprocess.check_output("hostname -I", shell=True)
             bot.sendMessage(chat_id, "Indirizzo Locale:  "+str(ip))
-        if msg["text"]=="/status":
-            testo = subprocess.check_output("free -m", shell=True)
-            test=testo.split("         ")
-            messaggio="Stato RAM:\n Totale:"+test[2]+"MB\n In Uso: "+test[3]+"MB\n Disponibile: "+test[7].replace("\nSwap:","")+"MB"
-            testo = subprocess.check_output("df -h", shell=True)
-            test=testo.split("\n")
-            tes=test[1].split(" ")
-            messaggio=messaggio+"\n\nStato HDD:\n Totale: "+tes[7]+"B\n In Uso: "+tes[9]+"B\n Disponibile: "+tes[13]+"B"
+         if msg["text"]=="/stato":
+            ram_totale = subprocess.check_output("free -m | grep Mem | awk '{print $2}'", shell=True)
+            ram_usata = subprocess.check_output("free -m | grep Mem | awk '{print $3}'", shell=True)
+            ram_disponibile = subprocess.check_output("free -m | grep Mem | awk '{print $7}'", shell=True)
+            messaggio="Stato RAM:\n Totale: "+str(ram_totale,"utf-8")[:-1]+"MB\n In Uso: "+str(ram_usata,"utf-8")[:-1]+"MB\n Disponibile: "+str(ram_disponibile,"utf-8")[:-1]+"M>
+            memoria_totale = subprocess.check_output("df -h | grep /dev/root | awk '{print $2}'", shell=True)
+            memoria_in_uso = subprocess.check_output("df -h | grep /dev/root | awk '{print $3}'", shell=True)
+            memoria_disponibile = subprocess.check_output("df -h | grep /dev/root | awk '{print $4}'", shell=True)
+            messaggio=messaggio+"\n\nStato HDD:\n Totale: "+str(memoria_totale,"utf-8")[:-1]+"B\n In Uso: "+str(memoria_in_uso,"utf-8")[:-1]+"B\n Disponibile: "+str(memoria_dis>
             testo=subprocess.check_output("cat /sys/class/thermal/thermal_zone*/temp", shell=True)
-            messaggio=messaggio+"\n\nStato CPU:\n Temperatura: "+testo[:2]+"."+testo[2:3]+"'C\n Utilizzo:"
-            testo=subprocess.check_output("mpstat",shell=True)
-            testo=testo.split("\n")
-            testo=testo[3].split(" ")
-            tes=100-float(testo[-1].replace(",","."))
-            messaggio=messaggio+" "+str(tes)
+            messaggio=messaggio+"\n\nStato CPU:\n Temperatura: "+str(testo,"utf-8")[:2]+"."+str(testo,"utf-8")[2:3]+"'C\n Utilizzo:"
+            testo=subprocess.check_output("mpstat | grep all | awk '{print $NF}'",shell=True)
+            tes=100-float(str(testo,"utf-8").replace(",","."))
+            tes=round(tes,1)
+            messaggio=messaggio+" "+str(tes)+"%"
             bot.sendMessage(chat_id, messaggio)
         if msg["text"]=="/reboot":
             bot.sendMessage(chat_id, "Sto riavviando la scheda.")
